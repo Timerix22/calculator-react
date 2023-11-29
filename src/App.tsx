@@ -6,7 +6,7 @@ import { TerminalCommand } from './models/TerminalCommand'
 import TerminalHistoryDisplay from './components/TerminalHistoryDisplay'
 import TerminalInputView from './components/TerminalInputDisplay'
 
-const helloMessage: string = 
+const helpMessage: string = 
 `   ______             __                      __              __
   /      \\           /  |                    /  |            /  |
  /&&&&&&  |  ______  && |  _______  __    __ && |  ______   _&& |_     ______    ______
@@ -17,10 +17,21 @@ const helloMessage: string =
  &&    &&/ &&    && |&& |&&       |&&    &&/ && |&&    && |  &&  &&/ &&    &&/ && |
   &&&&&&/   &&&&&&&/ &&/  &&&&&&&/  &&&&&&/  &&/  &&&&&&&/    &&&&/   &&&&&&/  &&/
 
+    You can just write math expressions in JavaScript.
+    Examples:
+        1+1
+        1.99 / (3-1)
+        Math.sin(2)
+        Math.cos(Math.PI/2)
+
+    Avaliable commands:
+        help  - shows this message
+        clear - clears the terminal
+
 `
 
 function App() {
-    const [history, historySet] = useState<TerminalHistory>(new TerminalHistory([]))
+    const [history, historySet] = useState<TerminalHistory>(new TerminalHistory([new TerminalCommand("help", [helpMessage])]))
     const [inputId] = useState(crypto.randomUUID())
     const [commandReverseIndex, commandReverseIndexSet] = useState(-1)
 
@@ -33,8 +44,8 @@ function App() {
             } 
         ],
         [
-            "info", command=> {
-                return new TerminalCommand(command, [ helloMessage ])
+            "help", command=> {
+                return new TerminalCommand(command, [ helpMessage ])
             }
         ]
     ])
