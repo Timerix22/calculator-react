@@ -44,9 +44,10 @@ function App() {
             } 
         ],
         [
-            "help", command=> {
-                return new TerminalCommand(command, [ helpMessage ])
-            }
+            "help", command=> new TerminalCommand(command, [ helpMessage ])
+        ],
+        [
+            "", command=> new TerminalCommand('', [])
         ]
     ])
 
