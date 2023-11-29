@@ -1,55 +1,22 @@
-:root {
-    --background: #1d2530;
-    --foreground:#eeeeee;
-    --border: #898a9e;
-    --orange: #ffa109;
-    --purple: #5f0db1;
-}
-
-html, body {
-    height: 100%;
-    padding: 0px;
-    margin: 0px;
-}
-
-body {
+* {
+    font-family: sans-serif;
+    font-size: 20px;
     text-align: center;
-    background-color: var(--background);
-    color: var(--foreground);
-    font-family: Consolas;
-    font-size: 16px;
 }
 
-.App {
-    height: calc(100% - 8px);
-    width: calc(100% - 8px);
-    padding: 4px;
-}
-
-.terminal-container {
+input, button {
     padding: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--border);
-    height: calc(100% - 22px);
-    width: calc(100% - 22px);
-    text-align: left;
-    overflow:auto;
+    border-radius: 5px;
+    font: inherit
 }
 
-.terminal-input {
+button {
+    border: 1px solid gray;
+    background: whitesmoke;
+    margin-right: 5px;
+}
+
+button:nth-last-child(1), button:nth-last-child(2) {
+    background: tomato;
     color: white;
-    display: inline;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    border: 0px;
-    outline: 0px;
-    font: inherit;
-    width: '100%';
-}
-
-.terminal-output {
-    display:block;
-    margin: 0;
 }
