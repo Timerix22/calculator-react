@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useState } from 'react'
 import './App.css'
 import { TerminalHistory } from './models/TerminalHistory'
@@ -32,7 +32,7 @@ const helpMessage: string =
 
 function App() {
     const [history, historySet] = useState<TerminalHistory>(new TerminalHistory([new TerminalCommand("help", [helpMessage])]))
-    const [inputId] = useState(crypto.randomUUID())
+    const inputRef = useRef<HTMLInputElement>(null)
     const [commandReverseIndex, commandReverseIndexSet] = useState(-1)
 
     const commandHandlers = new Map<string, ((command: string) => TerminalCommand | undefined)>([
@@ -64,14 +64,13 @@ function App() {
         <div className='App'>
             <div className='terminal-container'
                 onClick={(e)=> {
-                    if(e.target instanceof HTMLElement && e.target.className.includes('terminal-container')){
-                        document.getElementById(inputId)?.focus()
-                    }
+                    if(e.target instanceof HTMLElement && e.target.className.includes('terminal-container'))
+                        inputRef.current?.focus()
                 }
             }>
                 <TerminalHistoryDisplay history={history}/>
                 <TerminalInputView>
-                    <input autoFocus id={inputId} className='terminal-input'
+                    <input autoFocus ref={inputRef} className='terminal-input'
                         style={{width: '80%', marginRight: '20px'}}
                         onKeyDown={(e => {
                             if(e.key === 'Enter'){
