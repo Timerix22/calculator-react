@@ -1,0 +1,11 @@
+# put this file in /etc/systemd/system/
+[Unit]
+Description=Web calculator written in ReactTS
+
+[Service]
+WorkingDirectory=/opt/calculator-react/
+ExecStart=/bin/bash /opt/calculator-react/start.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

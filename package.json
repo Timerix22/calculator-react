@@ -1,6 +1,6 @@
 {
   "name": "calculator-react",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@types/node": "^16.18.65",
@@ -9,6 +9,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+    "serve": "^14.2.1",
     "typescript": "^4.9.5"
   },
   "scripts": {
